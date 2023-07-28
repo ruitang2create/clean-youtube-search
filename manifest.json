@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Clean YouTube Search",
+  "version": "1.0",
+  "description": "A Chrome extension to clean YouTube search results.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "action": {
+    "default_popup": "menu.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/results*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
