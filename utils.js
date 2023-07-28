@@ -10,10 +10,9 @@ document.getElementById('for-you-checkbox').addEventListener('click', function (
 
 const getInitialState = async () => {
     if (!pageStateInitiated) {
-        const hideForYou = await chrome.storage.sync.get("hideForYou");
-        console.log(`HideForYou from chrome storage: ${JSON.stringify(hideForYou)}`);
+        const { hideForYou } = await chrome.storage.sync.get("hideForYou");
         const forYouCheckbox = document.getElementById('for-you-checkbox');
-        forYouCheckbox.checked = forYouCheckbox === 'true';
+        forYouCheckbox.checked = hideForYou === 'true';
         pageStateInitiated = true;
     }
 }
